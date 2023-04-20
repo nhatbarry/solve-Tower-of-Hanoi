@@ -1,13 +1,24 @@
 #include<iostream>
 #include<cmath>
 #include <cctype>
+#include<conio.h>
 using namespace std;
+int step = 0;
 void solve(int n, int from, int to, int mid)
 {
-    if(n == 1) cout << "Dua dia tu chong " << from << " sang chong " << to << endl;
+    if(n == 1) 
+    {
+        cout << "Buoc " << ++step << ": \n";
+        cout << "\tDua dia tu chong " << from << " sang chong " << to << endl;
+        //system("pause");
+        getch();
+    }
     else{
         solve(n - 1, from, mid, to);
-        cout << "Dua dia tu chong " << from << " sang chong " << to << endl;
+        cout << "Buoc " << ++step << ": \n";
+        cout << "\tDua dia tu chong " << from << " sang chong " << to << endl;
+        //system("pause");
+        getch();
         solve(n - 1, mid, to, from);
     }
 }
@@ -15,7 +26,7 @@ void welcome()
 {
     string image;
     cout << "\n\n\n\n\n";
-    cout << "\t\t====================CHUONG TRINH HUONG DAN GIAI THAP HA NOI====================\n";
+    cout << "\t\t================CHUONG TRINH HUONG DAN GIAI THAP HA NOI===============\n";
     cout << "\t\t............~~....................:!^....................^!:.........." << endl;
     cout << "\t\t............BB....................~@J....................Y&^.........." << endl;
     cout << "\t\t............BB....................~@J....................Y&^.........." << endl;
@@ -46,9 +57,10 @@ int main()
         {
             case 'Y':
             {
+                step = 0;
                 solve (n, 1, 3, 2);
                 fflush(stdin);
-                system("pause");
+                cout << "\n\n\t Da giai xong thap ha Noi.\n";
                 break;
             }
             case 'N':
@@ -59,5 +71,6 @@ int main()
         cout << "Thoat chuong trinh(Y/N): ";
         cin >> c;
         c = toupper(c);
+
     } while (c != 'Y');
 }
